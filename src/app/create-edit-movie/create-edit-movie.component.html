@@ -1,0 +1,46 @@
+<h1>Create / Edit Movie</h1>
+
+<form>
+    <label for="movie">Name: </label>
+    <input type="text" name="movie" id="movie" placeholder="Movie Name" [(ngModel)]="movie.name"> <br>
+
+    <label for="year">Release Year: </label>
+    <input type="text" name="year" placeholder="Release Year" [(ngModel)]="movie.relYear"> <br>
+
+    <label for="producer">Select Producer: </label> <br>
+    <input type="text" name="producer" placeholder="Producer" [(ngModel)]="movie.producer"
+        (keyup)="getProducerNames($event, 'producer');">
+
+    <!-- LIST OF PRODUCER NAME SUGGESTIONS FROM SEARCH KEYWORD -->
+    <ul *ngIf="suggProducers && suggProducers[0]; else createProducer" class="suggestions">
+        <li class="list" *ngFor="let producer of suggProducers;">
+            <button class="link-style" (click)="setProducer(producer);">{{ producer.fullName }}</button>
+        </li>
+    </ul>
+
+    <!-- CREATE PRODUCER IF NOT FOUND IN SUGGESTIONS -->
+    <ng-template #createProducer>
+        <button (click)="createMovieProducer('producer')"> Create Producer </button>
+    </ng-template>
+    <br>
+
+    <label for="actors">Select Actors: </label>
+    <input type="text" name="actors" placeholder="Add Actors" (keyup)="getProducerNames($event, 'actor');">
+    <p *ngFor="let actor of movie.actors"> {{ actor.fullName }} </p>
+
+    <!-- LIST OF ACTOR NAME SUGGESTIONS FROM SEARCH KEYWORD -->
+    <ul *ngIf="suggActors && suggActors[0]; else createActor" class="suggestions">
+        <li class="list" *ngFor="let actor of suggActors;">
+            <button class="link-style" (click)="setActor(actor);">{{ actor.fullName }}</button>
+        </li>
+    </ul>
+
+    <!-- CREATE ACTOR IF NOT FOUND IN SUGGESTIONS -->
+    <ng-template #createActor>
+        <button (click)="createMovieProducer('actor')"> Create Actor </button>
+    </ng-template>
+
+    <br>
+    <button (click)="saveMovie()">Create/Edit</button>
+    <p *ngIf="created" style="color: green;"><i>Success!</i></p>
+</form>

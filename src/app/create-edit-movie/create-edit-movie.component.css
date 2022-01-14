@@ -1,0 +1,13 @@
+.suggestions {
+    margin: 10px;
+    background-color: #fffdd0;
+    width: 10%;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.link-style {
+    text-decoration: none;
+}

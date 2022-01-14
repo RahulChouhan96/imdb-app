@@ -1,0 +1,14 @@
+<h1>List of Movies</h1>
+
+<button (click)="createMovie();">Create Movie</button> <br><br>
+
+<!-- LIST OF MOVIES -->
+<div *ngFor="let movie of movies;">
+    <b>Name: </b> {{ movie.name }} <br>
+    <b>Release Year: </b> {{ movie.relYear }} <br>
+    <b>Producer: </b> {{ movie.producer.fullName }} <br>
+    <b>Actors: </b> <span *ngFor="let actor of movie.actors;"> {{ actor.fullName }}, </span> <br>
+
+    <!-- EDIT A MOVIE -->
+    <button (click)="editMovie(movie._id);"><span>Edit</span></button> <br><br>
+</div>

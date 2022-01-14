@@ -1,27 +1,56 @@
-# Imdb
+# IMDB App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+This app is created using MEAN Stack.
 
-## Development server
+## Create Frontend Build
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ng build
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## MongoDB Database Connection
 
-## Build
+1. Create a database in your local environment with name `practice`.
+2. Add two collections `users` and `movies` in it.
+3. Create a few user documents for actors and producers (User collection has both. They can be identified by a field `type`).
+Use this sample user document and add 4-5 more.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```js
+{
+    "name" : "Rahul 1",
+    "fullName" : "Rahul 1",
+    "type" : "actor"
+}
+```
+To add producers, simply change type = "producer". Create 2-3 documents for each actor and producer.
 
-## Running unit tests
+## Run server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run node command `node server.js`
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Browser Setup
 
-## Further help
+1. Open `localhost:4700` in Chrome Browser.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## How to use the app?
+
+### Create a Movie
+
+1. Click "Create Movie" button. It will take you to Create movie page. Here you can create movies by adding details.
+2. You can also search actors and producers. And add them to movie.
+3. If actor/producer is not found, click on the button "Create Producer/Actor" next to text box. It will create and add it to your movie.
+4. Come back to movie page and you can see list of movies along with their necessary data like name, year, producer and actor names.
+
+### Update a Movie
+
+1. In movie list page, you can see a button "Edit" next to each movie.
+2. Click it and it will take you to the edit page.
+3. Make changes and save.
+
+## Future Updates
+
+1. A bio profile page for each actor and producer to show their details and their movies, awards etc.
+2. Add User logn/signup system so that each user can maintain their own interest and favourite movies n their own account.
+3. User ratings and feedback.
+4. Add a tag to each movie that is it safe for children or it should be only watched by 18+.
